@@ -1,0 +1,34 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TME_App"
+        xmlns:mw="clr-namespace:TME_App.VievModel"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="TME_App.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <mw:ViewModelTME_App />
+    </Window.DataContext>
+    <Grid>
+        <TextBox x:Name="TextBox1" HorizontalAlignment="Left" Margin="73,285,0,0" TextWrapping="Wrap" Text="{Binding inputText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="155" Height="29"/>
+        <TextBlock HorizontalAlignment="Left" Height="74" Margin="73,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="248" Text="Naciśnij poniższy przycisk aby wczytać z bazy wcześniej wylosowane numery, a następnie poczekaj chwilę aż pojawi się informacja o dotychczasowym zapełnieniu bazy danych"/>
+        <TextBlock HorizontalAlignment="Left" Margin="72,148,0,0" TextWrapping="Wrap" Text="{Binding quantityOfNumbersYouCanRandMessage, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="546" Height="133" RenderTransformOrigin="0.5,0.5">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-1.469"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.308"/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <Button x:Name="Button1" Content="Losuj liczby i zapisz do bazy" HorizontalAlignment="Left" Margin="73,330,0,0" VerticalAlignment="Top" Command="{Binding InputTextToInt}"/>
+        <Button x:Name="Button2" Content="Wczytaj dane z bazy" HorizontalAlignment="Left" Margin="73,108,0,0" VerticalAlignment="Top" Command="{Binding LoadDatabase}" Click="Button2_Click_1"/>
+
+        <mah:MetroProgressBar x:Name="ProgressBar2" HorizontalAlignment="Center" Height="22" Margin="0,370,0,0" VerticalAlignment="Top" Width="730" Background="#1F1316ED" Foreground="#FF00EAEF" Value="{Binding progressBarValue, Mode=OneWay}"/>
+
+
+    </Grid>
+</Window>
